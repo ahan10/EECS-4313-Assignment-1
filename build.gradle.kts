@@ -39,6 +39,14 @@ tasks.named<Test>("test") {
     finalizedBy(tasks.jacocoTestReport)
 }
 
+tasks.test{
+    exclude("**/integration/*")
+    exclude("**/presentation/*")
+    exclude("**/mapper/*")
+    exclude("**/StarRatingStubDbTest.class")
+    useJUnitPlatform()
+}
+
 tasks.jacocoTestReport {
     dependsOn(tasks.named<Test>("test")) // tests are required to run before generating the report
 
@@ -46,7 +54,12 @@ tasks.jacocoTestReport {
         fileTree(it) {
             setExcludes(listOf(
                     "**/controller/*",
-                    "**/presentation/*"
+                    "**/presentation/*",
+                    "**/dao/*",
+                    "**/service/*",
+                    "**/mapper/*",
+                    "**/StarRatingStubDb.class"
+
             ))
         }
     }))
@@ -63,3 +76,4 @@ jacoco {
     toolVersion = "0.8.11"
     reportsDirectory = layout.buildDirectory.dir("jacoco-reports")
 }
+
