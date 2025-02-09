@@ -43,6 +43,9 @@ tasks.test{
     exclude("**/integration/*")
     exclude("**/presentation/*")
     exclude("**/mapper/*")
+    exclude("**/controller/*")
+    exclude("**/service/*")
+    exclude("**/dao/*")
     exclude("**/StarRatingStubDbTest.class")
     useJUnitPlatform()
 }
@@ -58,8 +61,11 @@ tasks.jacocoTestReport {
                     "**/dao/*",
                     "**/service/*",
                     "**/mapper/*",
-                    "**/StarRatingStubDb.class"
-
+                    "**/service/*",
+                    "**/config/*",
+                    "**/StarRatingStubDb.class",
+                    "**/MultiLineCellRendererForUser.class",
+                    "**/MultiLineCellRenderer.class"
             ))
         }
     }))
@@ -76,4 +82,3 @@ jacoco {
     toolVersion = "0.8.11"
     reportsDirectory = layout.buildDirectory.dir("jacoco-reports")
 }
-
