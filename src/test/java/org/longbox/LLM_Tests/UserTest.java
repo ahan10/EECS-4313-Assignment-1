@@ -78,11 +78,11 @@ class UserTest {
     void testEquals_DifferentClass_ShouldReturnFalse() {
         assertNotEquals(user1, new Object());
     }
-
-    @Test
-    void testEquals_DifferentEmail_ShouldReturnFalse() {
-        assertNotEquals(user1, user4);
-    }
+// duplicate test
+//    @Test
+//    void testEquals_DifferentEmail_ShouldReturnFalse() {
+//        assertNotEquals(user1, user4);
+//    }
 
     @Test
     void testEquals_DifferentUserName_ShouldReturnFalse() {

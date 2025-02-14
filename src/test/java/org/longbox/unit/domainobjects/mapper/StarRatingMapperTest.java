@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.domainobjects.entity.ComicBook;
-import org.longbox.domainobjects.entity.StarRating;
 import org.longbox.domainobjects.entity.User;
 import org.longbox.domainobjects.mapper.StarRatingMapper;
 
@@ -17,7 +16,7 @@ public class StarRatingMapperTest {
 	@Test
     public void testToDto() {
         // Create a StarRating entity
-        StarRating starRating = new StarRating();
+        org.longbox.domainobjects.entity.StarRating starRating = new org.longbox.domainobjects.entity.StarRating();
         starRating.setUser(new User());
         starRating.getUser().setId(1L);
         starRating.setComicBook(new ComicBook());
@@ -25,7 +24,7 @@ public class StarRatingMapperTest {
         starRating.setRating(5);
 
         // Map the StarRating entity to a StarRatingDto
-        StarRatingDto starRatingDto = StarRatingMapper.toDto(starRating);
+        StarRating starRatingDto = StarRatingMapper.toDto(starRating);
 
         // Verify that the mapping is correct
         assertNotNull(starRatingDto);
@@ -35,9 +34,9 @@ public class StarRatingMapperTest {
 
 	@Test
 	public void testToDtoList() {
-		List<StarRating> starRatingList = new ArrayList<>();
+		List<org.longbox.domainobjects.entity.StarRating> starRatingList = new ArrayList<>();
 		for (int i = 0; i <= 3; i++) {
-			StarRating starRating = new StarRating();
+			org.longbox.domainobjects.entity.StarRating starRating = new org.longbox.domainobjects.entity.StarRating();
 			starRating.setUser(new User());
 			starRating.getUser().setId((long) i);
 			starRating.setComicBook(new ComicBook());
@@ -46,7 +45,7 @@ public class StarRatingMapperTest {
 			starRatingList.add(starRating);
 		}
 		
-		List<StarRatingDto> starRatingDtoList = StarRatingMapper.toDtoList(starRatingList);
+		List<StarRating> starRatingDtoList = StarRatingMapper.toDtoList(starRatingList);
 		
         for (int i = 0; i < 3; i++) {
             assertEquals((long) (i), starRatingDtoList.get(i).getUserId());
@@ -57,10 +56,10 @@ public class StarRatingMapperTest {
 	
 	@Test
 	public void testToEntity() {
-		StarRatingDto starRatingDto = new StarRatingDto();
+		StarRating starRatingDto = new StarRating();
 		starRatingDto.setRating(5);
 		
-		StarRating starRating = StarRatingMapper.toEntity(starRatingDto);
+		org.longbox.domainobjects.entity.StarRating starRating = StarRatingMapper.toEntity(starRatingDto);
 		
 		assertEquals(5, starRating.getRating());
 	}

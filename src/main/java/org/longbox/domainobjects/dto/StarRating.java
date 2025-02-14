@@ -1,7 +1,7 @@
 package org.longbox.domainobjects.dto;
 
 import java.util.Objects;
-import org.longbox.domainobjects.entity.StarRating;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 
-public class StarRatingDto {
+public class StarRating {
 	private long userId;
     private long comicBookId;
     private int rating;
@@ -27,7 +27,7 @@ public class StarRatingDto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		StarRatingDto other = (StarRatingDto) obj;
+		StarRating other = (StarRating) obj;
 		return comicBookId == other.comicBookId && Objects.equals(rating, other.rating)
 				&& userId == other.userId;
 	}

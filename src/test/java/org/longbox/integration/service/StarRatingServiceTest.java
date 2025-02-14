@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.businesslogic.service.StarRatingService;
 import org.longbox.config.HibernateUtils;
-import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.persistence.dao.StarRatingDaoImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,7 +43,7 @@ public class StarRatingServiceTest {
 
     @Test
     void test_saveStarRating() {
-        StarRatingDto addStarRating = new StarRatingDto();
+        StarRating addStarRating = new StarRating();
         addStarRating.setUserId(1);
         addStarRating.setComicBookId(1);
         addStarRating.setRating(5);

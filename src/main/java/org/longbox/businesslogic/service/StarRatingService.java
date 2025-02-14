@@ -2,8 +2,7 @@ package org.longbox.businesslogic.service;
 
 import java.text.DecimalFormat;
 import java.util.List;
-import org.longbox.domainobjects.dto.StarRatingDto;
-import org.longbox.domainobjects.entity.StarRating;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.persistence.dao.StarRatingDao;
 
 public class StarRatingService {
@@ -24,9 +23,9 @@ public class StarRatingService {
 	        df.setRoundingMode(java.math.RoundingMode.HALF_UP);
 
 			float runningSum = 0;
-			List<StarRatingDto> ratings = starRatingDao.getStarRatingsByComic(comicId);
+			List<StarRating> ratings = starRatingDao.getStarRatingsByComic(comicId);
 			
-			for (StarRatingDto rating : ratings) {
+			for (StarRating rating : ratings) {
 				runningSum += rating.getRating();
 			}
 			
@@ -35,7 +34,7 @@ public class StarRatingService {
 		}
 	}
 
-	public void saveStarRating(StarRatingDto starRatingDto) {
+	public void saveStarRating(StarRating starRatingDto) {
 		starRatingDao.saveStarRating(starRatingDto);
 	}
 	

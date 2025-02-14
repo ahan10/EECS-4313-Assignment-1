@@ -7,18 +7,18 @@ import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.longbox.domainobjects.dto.ComicBookDto;
-import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.domainobjects.dto.UserDto;
 
 public class StarRatingDtoTest {
-	StarRatingDto starRatingDto1, starRatingDto2;
+	StarRating starRatingDto1, starRatingDto2;
 	UserDto userDto;
 	ComicBookDto comicBook1;
 	
 	@BeforeEach
 	void init() {
 		
-		starRatingDto1 = new StarRatingDto();
+		starRatingDto1 = new StarRating();
 		starRatingDto1.setComicBookId(1L);
 		starRatingDto1.setUserId(3L);
 		starRatingDto1.setRating(5);
@@ -63,7 +63,7 @@ public class StarRatingDtoTest {
 
         // Test the constructor
 
-        StarRatingDto starRatingDto = new StarRatingDto();
+        StarRating starRatingDto = new StarRating();
         starRatingDto.setUserId(userDto.getId());
         starRatingDto.setComicBookId(comicBookDto.getId());
 
@@ -75,7 +75,7 @@ public class StarRatingDtoTest {
     @Test
     public void testConstructorWithUserIdAndComicBookId() {
         // Test the constructor
-    	StarRatingDto starRatingDto = new StarRatingDto();
+    	StarRating starRatingDto = new StarRating();
     	starRatingDto.setUserId(1L);
     	starRatingDto.setComicBookId(1L);
 
@@ -87,16 +87,16 @@ public class StarRatingDtoTest {
     @Test
     public void testEqualsAndHashCode() {
         // Create two StarRatingDto objects with identical properties
-    	StarRatingDto starRatingDto1 = new StarRatingDto();
+    	StarRating starRatingDto1 = new StarRating();
     	starRatingDto1.setUserId(1L);
     	starRatingDto1.setComicBookId(1L);
 
-        StarRatingDto starRatingDto2 = new StarRatingDto();
+        StarRating starRatingDto2 = new StarRating();
         starRatingDto2.setUserId(1L);
         starRatingDto2.setComicBookId(1L);
 
         // Create another StarRatingDto object with different properties
-        StarRatingDto starRatingDto3 = new StarRatingDto();
+        StarRating starRatingDto3 = new StarRating();
         starRatingDto3.setUserId(2L);
         starRatingDto3.setComicBookId(1L);
 
@@ -111,7 +111,7 @@ public class StarRatingDtoTest {
     @Test
     public void testToString() {
         // Create a StarRatingDto object
-    	StarRatingDto starRatingDto = new StarRatingDto();
+    	StarRating starRatingDto = new StarRating();
     	starRatingDto.setUserId(1L);
     	starRatingDto.setComicBookId(1L);
     	starRatingDto.setRating(5);

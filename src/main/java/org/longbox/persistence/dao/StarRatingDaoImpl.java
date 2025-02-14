@@ -8,9 +8,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.longbox.config.HibernateUtils;
-import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.domainobjects.entity.ComicBook;
-import org.longbox.domainobjects.entity.StarRating;
 import org.longbox.domainobjects.entity.User;
 import org.longbox.domainobjects.mapper.StarRatingMapper;
 
@@ -22,15 +21,15 @@ public class StarRatingDaoImpl implements StarRatingDao {
 	 }
 
 	@Override
-	public StarRating getStarRatingById(long userId, long comicId) { 
+	public org.longbox.domainobjects.entity.StarRating getStarRatingById(long userId, long comicId) {
 		Session session = null;
-        StarRating starRating = new StarRating();
+        org.longbox.domainobjects.entity.StarRating starRating = new org.longbox.domainobjects.entity.StarRating();
         
         try {
             session = sessionFactory.openSession();
             starRating = session.createQuery(
                             "SELECT s FROM StarRating s WHERE s.user.id = :userID AND s.comicBook.id = :comicID",
-                            StarRating.class)
+                            org.longbox.domainobjects.entity.StarRating.class)
             		.setParameter("userID", userId)
                     .setParameter("comicID", comicId)
                     .uniqueResult();
@@ -47,15 +46,15 @@ public class StarRatingDaoImpl implements StarRatingDao {
 	}
 
 	@Override
-	public List<StarRatingDto> getStarRatingsByComic(Long comicId) {
+	public List<StarRating> getStarRatingsByComic(Long comicId) {
 		Session session = null;
-        List<StarRating> starRatingList = new ArrayList<>();
+        List<org.longbox.domainobjects.entity.StarRating> starRatingList = new ArrayList<>();
 
         try {
             session = sessionFactory.openSession();
             starRatingList = session.createQuery(
                             "SELECT s FROM StarRating s WHERE s.comicBook.id = :comicID",
-                            StarRating.class)
+                            org.longbox.domainobjects.entity.StarRating.class)
                     .setParameter("comicID", comicId)
                     .list();
         }
@@ -71,7 +70,7 @@ public class StarRatingDaoImpl implements StarRatingDao {
 	}
 
 	@Override
-	public void saveStarRating(StarRatingDto starRatingDto) {
+	public void saveStarRating(StarRating starRatingDto) {
 		Session session = null;
 		Transaction transaction = null;
 		
@@ -94,7 +93,7 @@ public class StarRatingDaoImpl implements StarRatingDao {
 		    
 		    
 		    if (getStarRatingById(starRatingDto.getUserId(), starRatingDto.getComicBookId()) == null) {
-		    	StarRating starRating = new StarRating();
+		    	org.longbox.domainobjects.entity.StarRating starRating = new org.longbox.domainobjects.entity.StarRating();
 		    	starRating.setRating(starRatingDto.getRating());
 		    	starRating.setUser(user);
 		    	starRating.setComicBook(comicBook);
@@ -127,7 +126,7 @@ public class StarRatingDaoImpl implements StarRatingDao {
 }
 
 	@Override
-	public List<StarRatingDto> getStarRatingsByUser(Long userId) {
+	public List<StarRating> getStarRatingsByUser(Long userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

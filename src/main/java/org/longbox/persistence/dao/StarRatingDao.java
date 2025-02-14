@@ -1,17 +1,16 @@
 package org.longbox.persistence.dao;
 
 import java.util.List;
-import org.longbox.domainobjects.dto.StarRatingDto;
-import org.longbox.domainobjects.entity.StarRating;
+import org.longbox.domainobjects.dto.StarRating;
 
 public interface StarRatingDao {
 
-	StarRating getStarRatingById(long userId, long comicId);
+	org.longbox.domainobjects.entity.StarRating getStarRatingById(long userId, long comicId);
 
-    public List<StarRatingDto> getStarRatingsByComic(Long comicId);
+    public List<StarRating> getStarRatingsByComic(Long comicId);
 
-    void saveStarRating(StarRatingDto StarRatingDTO);
+    void saveStarRating(StarRating StarRatingDTO);
 
-    public List<StarRatingDto> getStarRatingsByUser(Long userId);
+    public List<StarRating> getStarRatingsByUser(Long userId);
 
 }

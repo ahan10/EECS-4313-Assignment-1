@@ -5,7 +5,7 @@ import org.longbox.businesslogic.service.CommentService;
 import org.longbox.businesslogic.service.StarRatingService;
 import org.longbox.businesslogic.service.UserService;
 import org.longbox.config.HibernateUtils;
-import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.domainobjects.dto.UserDto;
 import org.longbox.persistence.dao.*;
 import org.longbox.presentation.comicbook.ComicBookInfoPanel;
@@ -131,7 +131,7 @@ public class ComicBookInfoController implements ActionListener, MouseListener {
     }
 
     private void saveRating(String rating) {
-    	StarRatingDto starRatingDto = new StarRatingDto();
+    	StarRating starRatingDto = new StarRating();
     	starRatingDto.setRating(Integer.parseInt(rating));
     	starRatingDto.setUserId(this.comicBookInfoPanel.getUserSession().getUser().getId());
     	starRatingDto.setComicBookId(this.comicBookInfoPanel.getComicBookDTO().getId());

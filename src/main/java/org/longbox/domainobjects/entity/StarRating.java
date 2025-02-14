@@ -1,11 +1,8 @@
 package org.longbox.domainobjects.entity;
 
-import org.longbox.domainobjects.dto.StarRatingDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.longbox.domainobjects.mapper.ComicBookMapper;
-import org.longbox.domainobjects.mapper.UserMapper;
 
 @Entity
 @Table(name = "star_ratings")

@@ -7,14 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.longbox.domainobjects.dto.StarRatingDto;
-import org.longbox.domainobjects.entity.StarRating;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.persistence.stubdatabase.StarRatingStubDb;
 
 public class StarRatingStubDbTest {
 	StarRatingStubDb starRatingStubDb;
-	List<StarRatingDto> starRatingList;
-	StarRatingDto starRating1, starRating2;
+	List<StarRating> starRatingList;
+	StarRating starRating1, starRating2;
 	
 	@BeforeEach
     void setup(){
@@ -22,12 +21,12 @@ public class StarRatingStubDbTest {
         starRatingStubDb.loadJsonToArrayList();
         starRatingList = starRatingStubDb.deserializeStubData(starRatingStubDb.getABSOLUTE_FILE_PATH());
 
-        starRating1 = new StarRatingDto();
+        starRating1 = new StarRating();
         starRating1.setUserId(1L);
         starRating1.setComicBookId(1L);
         starRating1.setRating(5);
 
-        starRating2 = new StarRatingDto();
+        starRating2 = new StarRating();
         starRating2.setUserId(3L);
         starRating2.setComicBookId(8L);
         starRating2.setRating(3);
@@ -51,40 +50,40 @@ public class StarRatingStubDbTest {
 	 
 	 @Test
 	 	void test_getStarRatingById_1() {
-		 StarRating s = starRatingStubDb.getStarRatingById(7L, 1L);
+		 org.longbox.domainobjects.entity.StarRating s = starRatingStubDb.getStarRatingById(7L, 1L);
 		 assertEquals(3, s.getRating());
 	 }
 	 
 	 @Test
 	 	void test_getStarRatingById_2() {
-		 StarRating s = starRatingStubDb.getStarRatingById(25L, 2L);
+		 org.longbox.domainobjects.entity.StarRating s = starRatingStubDb.getStarRatingById(25L, 2L);
 		 assertEquals(5, s.getRating());
 	 }
 	 
 	 @Test
 	    void test_getStarRatingsByComic_1(){
-	        List<StarRatingDto> actualList = starRatingStubDb.getStarRatingsByComic(1L);
+	        List<StarRating> actualList = starRatingStubDb.getStarRatingsByComic(1L);
 	        int actual = actualList.size();
 	        assertEquals(1, actual);
 	    }
 
 	    @Test
 	    void test_getStarRatingsByComic_2(){
-	        List<StarRatingDto> actualList = starRatingStubDb.getStarRatingsByComic(14L);
+	        List<StarRating> actualList = starRatingStubDb.getStarRatingsByComic(14L);
 	        int actual = actualList.size();
 	        assertEquals(2, actual);
 	    }
 	    
 	    @Test
 	    void test_getStarRatingsByUser_1(){
-	        List<StarRatingDto> actualList = starRatingStubDb.getStarRatingsByUser(1L);
+	        List<StarRating> actualList = starRatingStubDb.getStarRatingsByUser(1L);
 	        int actual = actualList.size();
 	        assertEquals(0, actual);
 	    }
 
 	    @Test
 	    void test_getStarRatingsByUser_2(){
-	        List<StarRatingDto> actualList = starRatingStubDb.getStarRatingsByUser(5L);
+	        List<StarRating> actualList = starRatingStubDb.getStarRatingsByUser(5L);
 	        int actual = actualList.size();
 	        assertEquals(2, actual);
 	    }

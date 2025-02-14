@@ -2,14 +2,14 @@ package org.longbox.unit.domainobjects.entity;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import org.longbox.domainobjects.dto.StarRatingDto;
+import org.longbox.domainobjects.dto.StarRating;
 
 class StarRatingTest {
 
 	    @Test
 	    public void testGettersAndSetters() {
 	        // Create a StarRating object
-	    	StarRatingDto starRatingDto = new StarRatingDto();
+	    	StarRating starRatingDto = new StarRating();
 
 	        // Set value using setters
 	    	starRatingDto.setRating(4);

@@ -9,9 +9,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.longbox.domainobjects.dto.CommentDto;
-import org.longbox.domainobjects.dto.StarRatingDto;
-import org.longbox.domainobjects.entity.StarRating;
+import org.longbox.domainobjects.dto.StarRating;
 import org.longbox.domainobjects.mapper.StarRatingMapper;
 import org.longbox.persistence.dao.StarRatingDao;
 
@@ -27,12 +25,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class StarRatingStubDb implements StarRatingDao, JsonConvertor{
-	 private List<StarRatingDto> starRatingsStubData = new ArrayList<>();
+	 private List<StarRating> starRatingsStubData = new ArrayList<>();
 	    private final String ABSOLUTE_FILE_PATH = "src/main/resources/StarRatingStubDb.json";
 
 	    @Override
-	    public StarRating getStarRatingById(long userID, long comicID) {
-	    	for(StarRatingDto s : starRatingsStubData) {
+	    public org.longbox.domainobjects.entity.StarRating getStarRatingById(long userID, long comicID) {
+	    	for(StarRating s : starRatingsStubData) {
 	    		if (s.getComicBookId() == comicID && s.getUserId() == userID) {
 	    			return StarRatingMapper.toEntity(s);
 	    		}
@@ -41,9 +39,9 @@ public class StarRatingStubDb implements StarRatingDao, JsonConvertor{
 	    }
 
 	    @Override
-	    public List<StarRatingDto> getStarRatingsByComic(Long comicID) {
-	        List<StarRatingDto> StarRatingList = new ArrayList<>();
-	        for(StarRatingDto s: starRatingsStubData) {
+	    public List<StarRating> getStarRatingsByComic(Long comicID) {
+	        List<StarRating> StarRatingList = new ArrayList<>();
+	        for(StarRating s: starRatingsStubData) {
 	            if(s.getComicBookId() == comicID){
 	                StarRatingList.add(s);
 	            }
@@ -52,9 +50,9 @@ public class StarRatingStubDb implements StarRatingDao, JsonConvertor{
 	    }
 
 	    @Override
-	    public void saveStarRating(StarRatingDto StarRatingDTO) {
+	    public void saveStarRating(StarRating StarRatingDTO) {
 	    	boolean flag = false;
-	    	for(StarRatingDto s: starRatingsStubData) {
+	    	for(StarRating s: starRatingsStubData) {
 	    		if (s.getComicBookId() == StarRatingDTO.getComicBookId() && s.getUserId() == StarRatingDTO.getUserId()) {
 	    			s.setRating(StarRatingDTO.getRating());
 	    			flag = true;
@@ -66,9 +64,9 @@ public class StarRatingStubDb implements StarRatingDao, JsonConvertor{
 	    }
 
 	    @Override
-	    public List<StarRatingDto> getStarRatingsByUser(Long userID) {
-	        List<StarRatingDto> StarRatingList = new ArrayList<>();
-	        for(StarRatingDto s: starRatingsStubData){
+	    public List<StarRating> getStarRatingsByUser(Long userID) {
+	        List<StarRating> StarRatingList = new ArrayList<>();
+	        for(StarRating s: starRatingsStubData){
 	            if(s.getUserId() == userID){
 	                StarRatingList.add(s);
 	            }
@@ -92,8 +90,8 @@ public class StarRatingStubDb implements StarRatingDao, JsonConvertor{
 	    }
 
 	    @Override
-	    public List<StarRatingDto> deserializeStubData(String filepath) {
-	        Type listType = new TypeToken<ArrayList<StarRatingDto>>(){}.getType();
+	    public List<StarRating> deserializeStubData(String filepath) {
+	        Type listType = new TypeToken<ArrayList<StarRating>>(){}.getType();
 	        JsonReader reader = null;
 
 	        try {

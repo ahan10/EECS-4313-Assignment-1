@@ -10,7 +10,6 @@ import org.longbox.businesslogic.utils.MultiLineCellRenderer;
 import org.longbox.config.HibernateUtils;
 import org.longbox.domainobjects.dto.ComicBookDto;
 import org.longbox.domainobjects.dto.CommentDto;
-import org.longbox.domainobjects.dto.StarRatingDto;
 import org.longbox.domainobjects.mapper.ComicBookMapper;
 import org.longbox.persistence.dao.*;
 import org.longbox.domainobjects.entity.ComicBook;
@@ -19,7 +18,6 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
