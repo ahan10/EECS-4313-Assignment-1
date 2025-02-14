@@ -133,20 +133,22 @@ class ComicBookSearchUtilsTest {
         userSession = UserSession.getInstance(u1DTO);
     }
 
+    // weak test fixed, replace assertEquals, with assertIterableEquals
+
     @Test
     public void comicBookSearchByPublisherCaseInsensitive() {
         List<ComicBookDto> expected = new ArrayList<>();
         expected.add(comicBook1);
         expected.add(comicBook5);
         List<ComicBookDto> actual = ComicBookSearchUtils.searchComicBookByPublisher(comicBookDtoList, "eclipse");
-        assertEquals(expected, actual, "Case insensitive search by publisher");
+        assertIterableEquals(expected, actual, "Case insensitive search by publisher");
     }
 
     @Test
     public void comicBookSearchByPublisherNoMatch() {
         List<ComicBookDto> expected = new ArrayList<>();
         List<ComicBookDto> actual = ComicBookSearchUtils.searchComicBookByPublisher(comicBookDtoList, "nonexistent publisher");
-        assertEquals(expected, actual, "Search by publisher with no matches");
+        assertIterableEquals(expected, actual, "Search by publisher with no matches");
     }
 
     @Test
@@ -155,14 +157,14 @@ class ComicBookSearchUtilsTest {
         expected.add(comicBook4);
         expected.add(comicBook8);
         List<ComicBookDto> actual = ComicBookSearchUtils.searchComicBookByYear(comicBookDtoList, "1993");
-        assertEquals(expected, actual, "Search by year should return correct comics");
+        assertIterableEquals(expected, actual, "Search by year should return correct comics");
     }
 
     @Test
     public void comicBookSearchByYearNoMatch() {
         List<ComicBookDto> expected = new ArrayList<>();
         List<ComicBookDto> actual = ComicBookSearchUtils.searchComicBookByYear(comicBookDtoList, "2050");
-        assertEquals(expected, actual, "Search by year should return empty list if no match");
+        assertIterableEquals(expected, actual, "Search by year should return empty list if no match");
     }
 
 
@@ -174,8 +176,9 @@ class ComicBookSearchUtilsTest {
         expected.add(comicBook5);
         expected.add(comicBook7);
         List<ComicBookDto> actual = ComicBookSearchUtils.searchComicBookByGenre(comicBookDtoList, "science fiction"); // Ensure it's lowercase to match toUpperCase() conversion
-        assertEquals(expected, actual, "Case insensitive search by genre should return correct results");
+        assertIterableEquals(expected, actual, "Case insensitive search by genre should return correct results");
     }
+
 
     @Test
     public void comicBookSearchByGenreWithSpecialCharacters() {
@@ -183,7 +186,7 @@ class ComicBookSearchUtilsTest {
         expected.add(comicBook2);
         expected.add(comicBook6);
         List<ComicBookDto> actual = ComicBookSearchUtils.searchComicBookByGenre(comicBookDtoList, "Crime"); // Remove special characters to match regex replacement
-        assertEquals(expected, actual, "Genre search should ignore special characters and return the correct results");
+        assertIterableEquals(expected, actual, "Genre search should ignore special characters and return the correct results");
     }
 
 }

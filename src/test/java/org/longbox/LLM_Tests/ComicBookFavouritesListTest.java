@@ -58,6 +58,7 @@ class ComicBookFavouritesListTest {
         assertEquals(cbf1, cbf2, "Two objects with null IDs should be equal.");
     }
 
+    
     @Test
     void testHashCodeSameId() {
         ComicBookFavouritesList cbf1 = new ComicBookFavouritesList();

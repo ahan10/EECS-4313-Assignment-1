@@ -11,7 +11,7 @@ public class UserTest {
     @Test
     public void testEqualsAndHashCode() {
         // Create two users with the same email, user name, and name
-        User user1 = user1 = new User();
+        User user1 = new User();
         user1.setUserName("user1");
         user1.setFirstName("John");
         user1.setLastName("Doe");
